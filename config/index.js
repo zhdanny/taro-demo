@@ -1,8 +1,8 @@
 const path = require('path')
 
 const config = {
-  projectName: 'driver-partner_mini_program',
-  date: '2019-10-10',
+  projectName: 'Taro-demo',
+  date: '2020-04-16',
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,
@@ -23,7 +23,13 @@ const config = {
       plugins: [
         'transform-decorators-legacy',
         'transform-class-properties',
-        'transform-object-rest-spread'
+        'transform-object-rest-spread',
+        ['transform-runtime', {
+          "helpers": false,
+          "polyfill": false,
+          "regenerator": true,
+          "moduleName": 'babel-runtime'
+        }]
       ]
     }
   },
@@ -40,7 +46,6 @@ const config = {
   },
   copy: {
     patterns: [
-      { from: 'src/tingyun-mp-agent.js', to: 'dist/weapp/tingyun-mp-agent.js' }
     ],
     options: {
     }
@@ -48,7 +53,6 @@ const config = {
   mini: {
     compile: {
       exclude: [
-        path.resolve(__dirname, '..', 'src/tingyun-mp-agent.js')
       ]
     }
   },
