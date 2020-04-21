@@ -19,32 +19,34 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/MapDemo/index',
+      'pages/Home/index',
+      'pages/UserCenter/index',
       'pages/ExampleHook/index',
+      'pages/MapDemo/index'
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
+      navigationBarBackgroundColor: '#000',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     },
     tabBar: {
-      borderStyle: "black",
-      selectedColor: "#000000",
+      borderStyle: "white",
+      selectedColor: "#1296db",
       backgroundColor: "#ffffff",
-      color: "#c7c7c7",
+      color: "#8a8a8a",
       list: [
         {
-          pagePath: "pages/MapDemo/index",
-          selectedIconPath: "./assets/icons/discover@highlight.png",
-          iconPath: "./assets/icons/discover.png",
-          text: "MapDemo"
+          pagePath: "pages/Home/index",
+          selectedIconPath: "./assets/icons/gongnengliebiao1.png",
+          iconPath: "./assets/icons/gongnengliebiao2.png",
+          text: "功能列表"
         },
         {
-          pagePath: "pages/ExampleHook/index",
-          selectedIconPath: "./assets/icons/my@highlight.png",
-          iconPath: "./assets/icons/my.png",
-          text: "ExampleHook"
+          pagePath: "pages/UserCenter/index",
+          selectedIconPath: "./assets/icons/gerenxinxi1.png",
+          iconPath: "./assets/icons/gerenxinxi2.png",
+          text: "个人中心"
         }
       ]
     }

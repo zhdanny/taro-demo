@@ -43,6 +43,7 @@ const config = {
     '@/utils': path.resolve(__dirname, '..', 'src/utils'),
     '@/store': path.resolve(__dirname, '..', 'src/store'),
     '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/assets': path.resolve(__dirname, '..', 'src/assets'),
   },
   copy: {
     patterns: [
@@ -54,7 +55,10 @@ const config = {
     compile: {
       exclude: [
       ]
-    }
+    },
+    imageUrlLoaderOption: {
+      limit: 800 // 默认值，可以按需调小
+    },
   },
   weapp: {
     module: {
@@ -78,7 +82,7 @@ const config = {
         url: {
           enable: true,
           config: {
-            limit: 10240 // 设定转换尺寸上限
+            limit: 800 // 设定转换尺寸上限
           }
         },
         cssModules: {

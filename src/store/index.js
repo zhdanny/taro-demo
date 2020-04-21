@@ -1,7 +1,7 @@
-import testStore from './modules/test'
+import homeStore from './modules/homeStore'
 
 const store = {
-  testStore
+  homeStore
 }
 
 export default store

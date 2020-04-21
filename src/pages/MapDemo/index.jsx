@@ -37,7 +37,7 @@ export default class MapDemo extends Component {
 
   componentDidHide() { }
   config = {
-    navigationBarTitleText: 'test'
+    navigationBarTitleText: 'Map示例'
   }
   render() {
     const {longitude, latitude, marker, polygon, setting, points} = this.state

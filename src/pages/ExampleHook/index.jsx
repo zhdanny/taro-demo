@@ -10,7 +10,6 @@ function ExampleHook(){
   }, [])
 
   const init = ()=>{
-    console.log('23232')
     let arr = [{
       key: 1,
       value: 'mini'
@@ -34,6 +33,10 @@ function ExampleHook(){
       </View>
     </View>
   )
+}
+
+ExampleHook.config = {
+  navigationBarTitleText: 'Hook示例'
 }
 
 export default ExampleHook
