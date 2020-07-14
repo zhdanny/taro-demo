@@ -23,8 +23,7 @@ const config = {
       plugins: [
         'transform-decorators-legacy',
         'transform-class-properties',
-        'transform-object-rest-spread',
-        ['transform-runtime', {
+        'transform-object-rest-spread', ['transform-runtime', {
           "helpers": false,
           "polyfill": false,
           "regenerator": true,
@@ -33,8 +32,7 @@ const config = {
       ]
     }
   },
-  defineConstants: {
-  },
+  defineConstants: {},
   alias: {
     '@/model': path.resolve(__dirname, '..', 'src/model'),
     '@/config': path.resolve(__dirname, '..', 'src/config'),
@@ -46,18 +44,15 @@ const config = {
     '@/assets': path.resolve(__dirname, '..', 'src/assets'),
   },
   copy: {
-    patterns: [
-    ],
-    options: {
-    }
+    patterns: [],
+    options: {}
   },
   mini: {
     compile: {
-      exclude: [
-      ]
+      exclude: []
     },
     imageUrlLoaderOption: {
-      limit: 800 // 默认值，可以按需调小
+      limit: 10240 // 默认值，可以按需调小
     },
   },
   weapp: {
@@ -82,7 +77,7 @@ const config = {
         url: {
           enable: true,
           config: {
-            limit: 800 // 设定转换尺寸上限
+            limit: 10240 // 设定转换尺寸上限
           }
         },
         cssModules: {
@@ -95,34 +90,34 @@ const config = {
       }
     }
   },
-  h5: {
-    publicPath: '/',
-    staticDirectory: 'static',
-    module: {
-      postcss: {
-        autoprefixer: {
-          enable: true,
-          config: {
-            browsers: [
-              'last 3 versions',
-              'Android >= 4.1',
-              'ios >= 8'
-            ]
-          }
-        },
-        cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
-          config: {
-            namingPattern: 'module', // 转换模式，取值为 global/module
-            generateScopedName: '[name]__[local]___[hash:base64:5]'
-          }
-        }
-      }
-    }
-  }
+  // h5: {
+  //   publicPath: '/',
+  //   staticDirectory: 'static',
+  //   module: {
+  //     postcss: {
+  //       autoprefixer: {
+  //         enable: true,
+  //         config: {
+  //           browsers: [
+  //             'last 3 versions',
+  //             'Android >= 4.1',
+  //             'ios >= 8'
+  //           ]
+  //         }
+  //       },
+  //       cssModules: {
+  //         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+  //         config: {
+  //           namingPattern: 'module', // 转换模式，取值为 global/module
+  //           generateScopedName: '[name]__[local]___[hash:base64:5]'
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }

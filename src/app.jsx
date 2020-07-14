@@ -22,7 +22,8 @@ class App extends Component {
       'pages/Home/index',
       'pages/UserCenter/index',
       'pages/ExampleHook/index',
-      'pages/MapDemo/index'
+      'pages/MapDemo/index',
+      'pages/EchartDemo/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -49,6 +50,10 @@ class App extends Component {
           text: "个人中心"
         }
       ]
+    },
+    usingComponents: {
+      // "f2": "@antv/wx-f2",
+      // 'ec-canvas': './components/ec-canvas/ec-canvas' // 书写第三方组件的相对路径
     }
   }
 
