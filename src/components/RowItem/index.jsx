@@ -1,6 +1,7 @@
 import Taro, {} from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
 import arrowRight from '@/assets/images/arrow-right.png'
+import './index.scss'
 
 function RowItem({item, onJumpDetail}){
   return (

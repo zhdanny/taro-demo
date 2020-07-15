@@ -5,34 +5,29 @@ const config = {
   date: '2020-04-16',
   designWidth: 750,
   deviceRatio: {
-    '640': 2.34 / 2,
-    '750': 1,
-    '828': 1.81 / 2
+    640: 2.34 / 2,
+    750: 1,
+    828: 1.81 / 2
   },
-  onePxTransform: false,
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV}`,
-  plugins: {
-    babel: {
-      sourceMap: true,
-      presets: [
-        ['env', {
-          modules: false
-        }]
-      ],
-      plugins: [
-        'transform-decorators-legacy',
-        'transform-class-properties',
-        'transform-object-rest-spread', ['transform-runtime', {
-          "helpers": false,
-          "polyfill": false,
-          "regenerator": true,
-          "moduleName": 'babel-runtime'
-        }]
-      ]
-    }
+  // babel、csso、uglify 等配置从 plugins 配置中移出来
+  babel: {
+    sourceMap: true,
+    presets: [
+      ['env', { modules: false }]
+    ],
+    plugins: [
+      'transform-decorators-legacy',
+      'transform-class-properties',
+      'transform-object-rest-spread', ['transform-runtime', {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": 'babel-runtime'
+      }]
+    ]
   },
-  defineConstants: {},
   alias: {
     '@/model': path.resolve(__dirname, '..', 'src/model'),
     '@/config': path.resolve(__dirname, '..', 'src/config'),
@@ -43,83 +38,49 @@ const config = {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/assets': path.resolve(__dirname, '..', 'src/assets'),
   },
-  copy: {
-    patterns: [],
-    options: {}
-  },
+  // 小程序配置从 weapp 改为 mini，可以删掉很多小配置
   mini: {
-    compile: {
-      exclude: []
+    webpackChain(chain, webpack) {
+      chain.plugin('analyzer')
+        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
     },
-    imageUrlLoaderOption: {
-      limit: 10240 // 默认值，可以按需调小
-    },
-  },
-  weapp: {
-    module: {
-      postcss: {
-        autoprefixer: {
-          enable: true,
-          config: {
-            browsers: [
-              'last 3 versions',
-              'Android >= 4.1',
-              'ios >= 8'
-            ]
-          }
-        },
-        pxtransform: {
-          enable: true,
-          config: {
-
-          }
-        },
-        url: {
-          enable: true,
-          config: {
-            limit: 10240 // 设定转换尺寸上限
-          }
-        },
-        cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
-          config: {
-            namingPattern: 'module', // 转换模式，取值为 global/module
-            generateScopedName: '[name]__[local]___[hash:base64:5]'
-          }
+    cssLoaderOption: {},
+    postcss: {
+      pxtransform: {
+        enable: true,
+        config: {}
+      },
+      url: {
+        enable: true,
+        config: {
+          limit: 10240 // 设定转换尺寸上限
         }
       }
     }
   },
-  // h5: {
-  //   publicPath: '/',
-  //   staticDirectory: 'static',
-  //   module: {
-  //     postcss: {
-  //       autoprefixer: {
-  //         enable: true,
-  //         config: {
-  //           browsers: [
-  //             'last 3 versions',
-  //             'Android >= 4.1',
-  //             'ios >= 8'
-  //           ]
-  //         }
-  //       },
-  //       cssModules: {
-  //         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
-  //         config: {
-  //           namingPattern: 'module', // 转换模式，取值为 global/module
-  //           generateScopedName: '[name]__[local]___[hash:base64:5]'
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+  // 可以删掉很多小配置
+  h5: {
+    publicPath: '/',
+    staticDirectory: 'static',
+    webpackChain(chain, webpack) {},
+    postcss: {
+      autoprefixer: {
+        enable: true,
+        config: {
+          browsers: [
+            'last 3 versions',
+            'Android >= 4.1',
+            'ios >= 8'
+          ]
+        }
+      }
+    }
+  }
 }
 
 module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
-  return merge({}, config, require('./prod.js'))
+  return merge({}, config, require('./prod'))
 }
