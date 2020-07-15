@@ -8,6 +8,8 @@ import store from './store'
 
 import './app.scss'
 
+console.log('1');
+
 class App extends Component {
   componentDidMount () {}
 
