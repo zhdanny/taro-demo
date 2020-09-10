@@ -26,7 +26,8 @@ class App extends Component {
       'pages/ExampleHook/index',
       'pages/MapDemo/index',
       'pages/EchartDemo/index',
-      'pages/F2Demo/index'
+      'pages/F2Demo/index',
+      'pages/IDCard/index'
     ],
     window: {
       backgroundTextStyle: 'light',

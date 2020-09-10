@@ -1,0 +1,48 @@
+.camera_box{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  .camera{
+    height: 85vh;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    .id_m{
+      height: 85vh;
+      width: 100%;
+      z-index: 2;
+      position: absolute;
+    }
+    .img{
+      width: 550px;
+      height: 900px;
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0; 
+      top: 0;
+      bottom: 0;
+      margin: auto auto;
+    }
+  }
+  .camera_img{
+    height: 85vh; 
+    width: 100%;
+    display: block;
+    z-index: 1;
+    position: relative;
+  }
+  .action{
+    background: #000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+    position: relative;
+    .paishe-img, .queren-img, .chongpai-img{
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
