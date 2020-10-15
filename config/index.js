@@ -40,10 +40,10 @@ const config = {
   },
   // 小程序配置从 weapp 改为 mini，可以删掉很多小配置
   mini: {
-    webpackChain(chain, webpack) {
-      chain.plugin('analyzer')
-        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
-    },
+    // webpackChain(chain, webpack) {
+    //   chain.plugin('analyzer')
+    //     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
+    // },
     cssLoaderOption: {},
     postcss: {
       pxtransform: {

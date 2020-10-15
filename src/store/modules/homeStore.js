@@ -25,7 +25,7 @@ class HomeStore {
     },
     {
       title: '周期选择组件',
-      path: '/pages/F2Demo/index',
+      path: '/pages/WeekSelectDemo/index',
       key: 5
     },
     {
