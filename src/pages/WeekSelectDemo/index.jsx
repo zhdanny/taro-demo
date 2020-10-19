@@ -1,8 +1,10 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import WeekCalendar2 from '@/components/WeekCalendar2'
+import WeekCalendar from '@/components/WeekCalendar'
 
 function WeekSelectDemo(){
+  const disabledFeature1 = false
+  const disabledFeature2 = true
   const onCancel = () => {
 
   }
@@ -12,9 +14,25 @@ function WeekSelectDemo(){
 
   return (
     <View>
-      <WeekCalendar2
+      <View>
+        未来时间周期可选
+      </View>
+      <WeekCalendar
         onCancel={()=>onCancel} 
         onConfirm={()=>onConfirm} 
+        disabledFeature={disabledFeature1}
+        cancelText='重置'
+        confirmText='确认'
+      />
+      <View>
+        未来时间周期不可选
+      </View>
+      <WeekCalendar
+        onCancel={()=>onCancel} 
+        onConfirm={()=>onConfirm} 
+        disabledFeature={disabledFeature2}
+        cancelBtn={false}
+        confirmBtn={false}
       />
     </View>
   )
